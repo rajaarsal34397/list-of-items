@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beautiful Item List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4a6fa5;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .item-list li {
+            background-color: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .item-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #e9f5ff;
+        }
+
+        .item-list li::before {
+            content: "•";
+            color: #4a6fa5;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .icon {
+            margin-right: 15px;
+            color: #4a6fa5;
+            font-size: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Favorite Fruits</h1>
+        <ul class="item-list" id="itemList"></ul>
+    </div>
+
+    <script>
+        // Array of items with optional icons
+        const items = [
+            { name: "Apple", icon: "apple-alt" },
+            { name: "Banana", icon: "banana" },
+            { name: "Orange", icon: "orange" }
+        ];
+        
+        // Get the list element
+        const listElement = document.getElementById("itemList");
+        
+        // Loop through the items and add them to the list
+        items.forEach(item => {
+            const listItem = document.createElement("li");
+            
+            // Add icon if available
+            if (item.icon) {
+                const iconElement = document.createElement("i");
+                iconElement.className = `fas fa-${item.icon} icon`;
+                listItem.appendChild(iconElement);
+            }
+            
+            // Add item text
+            const textNode = document.createTextNode(item.name);
+            listItem.appendChild(textNode);
+            
+            listElement.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
